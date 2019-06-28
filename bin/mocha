@@ -151,5 +151,9 @@ if (Object.keys(nodeArgs).length) {
     proc.kill('SIGTERM'); // if that didn't work, we're probably in an infinite loop, so make it die.
   });
 } else {
-  require('../lib/cli/cli').main(unparse(mochaArgs, {alias: aliases}));
+  require('../lib/cli/cli')
+    .main(unparse(mochaArgs, {alias: aliases}))
+    .catch(e => {
+      process.exit(1);
+    });
 }

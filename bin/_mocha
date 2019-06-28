@@ -7,4 +7,9 @@
  * @see module:lib/cli
  */
 
-require('../lib/cli').main();
+require('../lib/cli')
+  .main()
+  .catch(e => {
+    console.error(e);
+    process.exit(1);
+  });
